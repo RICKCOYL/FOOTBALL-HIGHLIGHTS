@@ -15,15 +15,20 @@ const Home = ({
   console.log(userData, error, loading);
   return (
     <div>
-      <h1>Matches</h1>
-      {loading && <div>loading...</div>}
-      { error || userData.map((e, i) => (
-        <div key={i}>
-          <div><img src={e.thumbnail} alt="" /></div>
-          <div>{e.title}</div>
-        </div>
+      <h1>ALL FOOTBALL MATCHES</h1>
+      <div className="all-matches grid shadow">
+        {loading && <div>loading...</div>}
+        {error || userData.map((e, i) => (
+          <div key={i} className="card">
+            <div><img src={e.thumbnail} className="card-img-top" alt="" /></div>
+            <div className="card-body">
+              <p>{e.competition.name}</p>
+              <h4 className="card-text">{e.title}</h4>
+            </div>
+          </div>
 
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
