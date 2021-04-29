@@ -21,11 +21,10 @@ export const fetchStockError = (error) => ({
 });
 
 export const fetchStock = () => (dispatch) => {
-  dispatch(fetchStockRequest);
+  dispatch(fetchStockRequest());
   axios.get(API_KEY)
     .then((response) => {
       const stock = response.data;
-      console.log(stock);
       dispatch(fetchStockSuccess(stock));
     })
     .catch((error) => {

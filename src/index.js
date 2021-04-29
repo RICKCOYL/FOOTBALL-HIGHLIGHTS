@@ -10,7 +10,6 @@ import rootReducer from './reducers/index';
 import reportWebVitals from './reportWebVitals';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
-console.log(store.getState());
 
 ReactDOM.render(
   <React.StrictMode>
