@@ -23,7 +23,7 @@ const Navbar = ({ userData, fetchStock }) => {
 
         <form className="d-flex">
           <select name="" id="">
-            {['ALL', ...newLeagues].map((e, i) => (
+            {['ALL LEAGUES', ...newLeagues].map((e, i) => (
               <option key={i}>{e}</option>
             ))}
           </select>
