@@ -1,22 +1,35 @@
-/* eslint-disable max-len */
-const FETCH_STOCK_REQUEST = 'FETCH_STOCK_REQUEST';
-const FETCH_STOCK_SUCCESS = 'FETCH_STOCK_SUCCESS';
-const FETCH_STOCK_ERROR = 'FETCH_STOCK_ERROR';
+/* eslint-disable no-console */
+import axios from 'axios';
+import API_KEY from '../api';
 
-const fetchStockRequest = () => ({
+export const FETCH_STOCK_REQUEST = 'FETCH_STOCK_REQUEST';
+export const FETCH_STOCK_SUCCESS = 'FETCH_STOCK_SUCCESS';
+export const FETCH_STOCK_ERROR = 'FETCH_STOCK_ERROR';
+
+export const fetchStockRequest = () => ({
   type: FETCH_STOCK_REQUEST,
 });
 
-const fetchStockSuccess = (stock) => ({
+export const fetchStockSuccess = (stock) => ({
   type: FETCH_STOCK_SUCCESS,
   payload: stock,
 });
 
-const fetchStockError = (error) => ({
+export const fetchStockError = (error) => ({
   type: FETCH_STOCK_ERROR,
   payload: error,
 });
 
-export {
-  fetchStockRequest, fetchStockSuccess, fetchStockError, FETCH_STOCK_REQUEST, FETCH_STOCK_SUCCESS, FETCH_STOCK_ERROR,
+export const fetchStock = () => (dispatch) => {
+  dispatch(fetchStockRequest);
+  axios.get(API_KEY)
+    .then((response) => {
+      const stock = response.data;
+      console.log(stock);
+      dispatch(fetchStockSuccess(stock));
+    })
+    .catch((error) => {
+      const errMsg = error.message;
+      dispatch(fetchStockError(errMsg));
+    });
 };
