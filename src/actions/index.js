@@ -5,6 +5,7 @@ import API_KEY from '../api';
 export const FETCH_STOCK_REQUEST = 'FETCH_STOCK_REQUEST';
 export const FETCH_STOCK_SUCCESS = 'FETCH_STOCK_SUCCESS';
 export const FETCH_STOCK_ERROR = 'FETCH_STOCK_ERROR';
+export const CHANGE_FILTER = 'CHANGE_FILTER';
 
 export const fetchStockRequest = () => ({
   type: FETCH_STOCK_REQUEST,
@@ -18,6 +19,11 @@ export const fetchStockSuccess = (stock) => ({
 export const fetchStockError = (error) => ({
   type: FETCH_STOCK_ERROR,
   payload: error,
+});
+
+export const changefilter = (filter) => ({
+  type: CHANGE_FILTER,
+  payload: filter,
 });
 
 export const fetchStock = () => (dispatch) => {

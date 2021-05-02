@@ -4,18 +4,24 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchStock } from '../actions/index';
+import { fetchStock, changefilter } from '../actions/index';
+import CatFilter from './CatFilter';
 
 const Home = ({
-  userData, error, loading, fetchStock,
+  userData, error, loading, fetchStock, filter,
 }) => {
+  const handleFilterChange = (filter) => {
+    changefilter(filter);
+  };
+
   useEffect(() => {
     fetchStock();
   }, []);
-  console.log(userData, error, loading);
+
   return (
     <div>
       <h1>ALL FOOTBALL MATCHES</h1>
+      <CatFilter filter={filter} handleFilterChange={handleFilterChange} />
       <div className="all-matches grid shadow">
         {loading && <div>loading...</div>}
         {error || userData.map((e, i) => (
@@ -35,6 +41,7 @@ const Home = ({
 
 const mapStateToProps = (state) => ({
   userData: state.stock.stock,
+  filter: state.filter,
   loading: state.stock.loading,
   error: state.stock.error,
 });
