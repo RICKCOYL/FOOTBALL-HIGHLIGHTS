@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { fetchStock } from '../actions/index';
 
 const Videolist = ({
@@ -22,13 +23,16 @@ const Videolist = ({
   return (
     <div className="all-matches grid shadow">
       {loading && <div>loading...</div>}
-      {error || userData.map((e, i) => (
-        <div key={i} className="card">
-          <div><img src={e.thumbnail} className="card-img-top" alt="" /></div>
-          <div className="card-body">
-            <p>{e.competition.name}</p>
-            <h4 className="card-text">{e.title}</h4>
-          </div>
+      {error || userData.map((e) => (
+        <div key={e.title} className="card">
+          <Link to={`/details/${e.title}`}>
+            <div><img src={e.thumbnail} className="card-img-top" alt="" /></div>
+
+            <div className="card-body">
+              <p>{e.competition.name}</p>
+              <h4 className="card-text">{e.title}</h4>
+            </div>
+          </Link>
         </div>
 
       ))}
