@@ -7,28 +7,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchStock } from '../actions/index';
 
-const CatFilter = ({ userData, handleFilterChange }) => {
-  const leagues = userData.map((e) => (
-    e.competition.name
-  ));
-
-  const newLeagues = [...new Set(leagues)];
-  newLeagues.sort();
-
-  return (
-    <div>
-      <form className="d-flex">
-        <select name="" id="" onChange={(e) => handleFilterChange(e.target.value)}>
-          {['ALL LEAGUES', ...newLeagues].map((e) => (
-            <option key={e}>{e}</option>
-          ))}
-        </select>
-      </form>
-    </div>
-  );
-};
+const CatFilter = ({ handleFilterChange, categories }) => (
+  <div className="d-flex justify-content-center my-5">
+    <form className="d-flex">
+      <select name="" id="" onChange={(e) => handleFilterChange(e.target.value)}>
+        {['ALL LEAGUES', ...categories].map((e) => (
+          <option key={e}>{e}</option>
+        ))}
+      </select>
+    </form>
+  </div>
+);
 
 CatFilter.propTypes = {
+  handleFilterChange: PropTypes.func.isRequired,
   userData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     stock: PropTypes.string.isRequired,

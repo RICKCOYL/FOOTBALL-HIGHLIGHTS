@@ -1,15 +1,18 @@
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-console */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchStock, changefilter } from '../actions/index';
+import { connect } from 'react-redux';
+import { changefilter, fetchStock } from '../actions/index';
 import CatFilter from './CatFilter';
+import Videolist from '../containers/Videolist';
 
-const Home = ({
-  userData, error, loading, fetchStock, filter,
-}) => {
+const Home = ({ filter, userData, loading }) => {
   const handleFilterChange = (filter) => {
     changefilter(filter);
   };
@@ -18,30 +21,30 @@ const Home = ({
     fetchStock();
   }, []);
 
+  const soccerleagues = userData.map((e) => (
+    e.competition.name
+  ));
+
+  const newLeagues = [...new Set(soccerleagues)];
+  newLeagues.sort();
+
   return (
     <div>
-      <h1>ALL FOOTBALL MATCHES</h1>
-      <CatFilter filter={filter} handleFilterChange={handleFilterChange} />
-      <div className="all-matches grid shadow">
-        {loading && <div>loading...</div>}
-        {error || userData.map((e, i) => (
-          <div key={i} className="card">
-            <div><img src={e.thumbnail} className="card-img-top" alt="" /></div>
-            <div className="card-body">
-              <p>{e.competition.name}</p>
-              <h4 className="card-text">{e.title}</h4>
-            </div>
-          </div>
+      <h1 className="text-center">ALL FOOTBALL MATCHES</h1>
+      {loading && <div>loading...</div>}
 
-        ))}
+      <div>
+        <CatFilter categories={newLeagues} filter={filter} handleFilterChange={handleFilterChange} />
+        <Videolist />
       </div>
+
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   userData: state.stock.stock,
-  filter: state.filter,
+  filter: state.catfilter,
   loading: state.stock.loading,
   error: state.stock.error,
 });
@@ -51,10 +54,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Home.propTypes = {
-  fetchStock: PropTypes.func.isRequired,
-  userData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    stock: PropTypes.string.isRequired,
-  }).isRequired,
+  filter: PropTypes.string.isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
