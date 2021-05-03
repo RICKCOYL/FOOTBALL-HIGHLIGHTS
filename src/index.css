@@ -30,3 +30,7 @@ h1 {
 a {
   text-decoration: none;
 }
+
+.flex{
+  diplay: flex;
+}

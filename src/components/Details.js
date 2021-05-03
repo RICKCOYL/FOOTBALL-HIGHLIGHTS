@@ -19,35 +19,50 @@ const Details = ({
     fetchStock();
   }, []);
 
-  const details = userData.map((e) => ({
-    thumbnail: e.thumbnail,
-    title: e.title,
-  }));
-
   let arrDetails = [];
 
-  const filterDetails = details.filter((e, i, a) => (title === e.title ? arrDetails.push({
-    thumnail: e.thumbnail,
+  const details = userData.map((e) => ({
+    title: e.title,
+    embed: e.embed,
+    url: e.url,
+    thumbnail: e.thumbnail,
+    date: e.date,
+    side1: e.side1.name,
+    side2: e.side2.name,
+    videos: e.videos.map((e) => e.embed),
+  }));
+
+  const filterDetails = details.filter((e) => (title === e.title ? arrDetails.push({
+    title: e.title,
+    embed: e.embed,
+    url: e.url,
+    thumbnail: e.thumbnail,
+    date: e.date,
+    side1: e.side1,
+    side2: e.side2,
+    videos: e.videos,
   }) : 'nothing'));
 
   console.log(arrDetails);
 
   return (
-    <div>
-      <h1>
-        {title}
-      </h1>
+    <>
+      {arrDetails.map((e) => (
 
-      <div>
-        {arrDetails.map((e) => (
-          <div>
-            <div>
-              <img src={e.thumnail} alt="" />
-            </div>
+        <div className="d-flex justify-content-between">
+          <div className="">
+            <h1>
+              {title}
+            </h1>
           </div>
-        ))}
-      </div>
-    </div>
+          <div>
+            <a href={e.url} className="btn btn-primary" target="_blank" rel="noreferrer">HIGHLIGHTS</a>
+          </div>
+        </div>
+
+      ))}
+
+    </>
   );
 };
 
