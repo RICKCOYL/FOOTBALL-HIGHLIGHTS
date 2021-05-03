@@ -28,14 +28,14 @@ const Home = ({ filter, userData, loading }) => {
   const newLeagues = [...new Set(soccerleagues)];
   newLeagues.sort();
 
+  const handleClick = () => { };
+
   return (
     <div>
       <h1 className="text-center">ALL FOOTBALL MATCHES</h1>
-      {loading && <div>loading...</div>}
-
       <div>
         <CatFilter categories={newLeagues} filter={filter} handleFilterChange={handleFilterChange} />
-        <Videolist />
+        <Videolist handleClick={handleClick} />
       </div>
 
     </div>

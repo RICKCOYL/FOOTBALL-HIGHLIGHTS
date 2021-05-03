@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable prefer-const */
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
@@ -11,21 +14,44 @@ const Details = ({
   fetchStock, userData, error, loading,
 }) => {
   const { title } = useParams();
+
   useEffect(() => {
     fetchStock();
   }, []);
+
+  const details = userData.map((e) => ({
+    thumbnail: e.thumbnail,
+    title: e.title,
+  }));
+
+  let arrDetails = [];
+
+  const filterDetails = details.filter((e, i, a) => (title === e.title ? arrDetails.push({
+    thumnail: e.thumbnail,
+  }) : 'nothing'));
+
+  console.log(arrDetails);
+
   return (
     <div>
       <h1>
-        DETAILS -
         {title}
       </h1>
 
+      <div>
+        {arrDetails.map((e) => (
+          <div>
+            <div>
+              <img src={e.thumnail} alt="" />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   userData: state.stock.stock,
   filter: state.catfilter,
   loading: state.stock.loading,

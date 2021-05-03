@@ -1,4 +1,4 @@
-/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { fetchStock } from '../actions/index';
 
 const Videolist = ({
-  userData, error, loading, fetchStock,
+  userData, error, loading, fetchStock, handleClick,
 }) => {
   useEffect(() => {
     fetchStock();
@@ -20,6 +20,7 @@ const Videolist = ({
 
   const newLeagues = [...new Set(leagues)];
   newLeagues.sort();
+
   return (
     <div className="all-matches grid shadow">
       {loading && <div>loading...</div>}
