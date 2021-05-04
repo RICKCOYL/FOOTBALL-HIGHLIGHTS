@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import showdown from 'showdown';
 import { useParams } from 'react-router';
 import { fetchStock } from '../actions/index';
+import ball from '../images/Soccer-ball.gif';
 
 const Details = ({
   fetchStock, userData, error, loading,
@@ -53,6 +54,7 @@ const Details = ({
 
   return (
     <>
+      {loading && <div><img id="loader" src={ball} alt="" /></div>}
       {arrDetails.map((e) => (
         <div>
           <div className="d-flex justify-content-between">
