@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { fetchStock } from '../actions/index';
+import ball from '../images/Soccer-ball.gif';
 
 const Videolist = ({
   userData, error, loading, fetchStock, handleClick,
@@ -23,7 +24,7 @@ const Videolist = ({
 
   return (
     <div className="all-matches grid shadow">
-      {loading && <div>loading...</div>}
+      {loading && <div><img id="loader" src={ball} alt="" /></div>}
       {error || userData.map((e) => (
         <div key={e.title} className="card">
           <Link to={`/details/${e.title}`}>

@@ -66,7 +66,7 @@ const Details = ({
                 {e.competition}
                 {' '}
                 :
-                <a href={e.competition_url} className="btn btn-info">live scores</a>
+                <a href={e.competition_url} className="btn btn-info" target="_blank" rel="noreferrer">live scores</a>
               </h4>
             </div>
             <div>
