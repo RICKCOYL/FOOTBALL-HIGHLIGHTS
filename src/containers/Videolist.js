@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
@@ -9,18 +9,16 @@ import { fetchStock } from '../actions/index';
 import ball from '../images/Soccer-ball.gif';
 
 const Videolist = ({
-  userData, error, loading, fetchStock, handleClick,
+  userData, error, loading, fetchStock, filter,
 }) => {
   useEffect(() => {
     fetchStock();
   }, []);
 
-  const leagues = userData.map((e) => (
-    e.competition.name
-  ));
+  // const leagues = userData.map((e) => (
+  // ));
 
-  const newLeagues = [...new Set(leagues)];
-  newLeagues.sort();
+  // console.log(filter);
 
   return (
     <div className="all-matches grid shadow">
@@ -55,6 +53,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 Videolist.propTypes = {
   fetchStock: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  loading: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
   userData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     stock: PropTypes.string.isRequired,

@@ -5,20 +5,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchStock } from '../actions/index';
+import { changefilter, fetchStock } from '../actions/index';
 
 const CatFilter = ({ handleFilterChange, categories }) => (
   <div className="d-flex justify-content-center my-5">
     <form className="d-flex">
       <select name="" id="" onChange={(e) => handleFilterChange(e.target.value)}>
-        {['ALL LEAGUES', ...categories].map((e) => (
+        {categories.map((e) => (
           <option key={e}>{e}</option>
         ))}
       </select>
     </form>
   </div>
 );
-
 CatFilter.propTypes = {
   handleFilterChange: PropTypes.func.isRequired,
   userData: PropTypes.shape({

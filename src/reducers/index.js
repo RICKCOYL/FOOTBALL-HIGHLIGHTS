@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { combineReducers } from 'redux';
 import stock from './stock';
 import catfilter from './filter';

@@ -21,11 +21,6 @@ export const fetchStockError = (error) => ({
   payload: error,
 });
 
-export const changefilter = (filter) => ({
-  type: CHANGE_FILTER,
-  payload: filter,
-});
-
 export const fetchStock = () => (dispatch) => {
   dispatch(fetchStockRequest());
   axios.get(API_KEY)
@@ -38,3 +33,8 @@ export const fetchStock = () => (dispatch) => {
       dispatch(fetchStockError(errMsg));
     });
 };
+
+export const changefilter = (filter) => ({
+  type: CHANGE_FILTER,
+  filter,
+});

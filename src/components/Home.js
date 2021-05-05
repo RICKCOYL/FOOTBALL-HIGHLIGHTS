@@ -13,10 +13,6 @@ import CatFilter from './CatFilter';
 import Videolist from '../containers/Videolist';
 
 const Home = ({ filter, userData, loading }) => {
-  const handleFilterChange = (filter) => {
-    changefilter(filter);
-  };
-
   useEffect(() => {
     fetchStock();
   }, []);
@@ -25,17 +21,20 @@ const Home = ({ filter, userData, loading }) => {
     e.competition.name
   ));
 
-  const newLeagues = [...new Set(soccerleagues)];
+  const filteredLeagues = [...new Set(soccerleagues)];
+  const newLeagues = ['ALL', ...filteredLeagues];
   newLeagues.sort();
 
-  const handleClick = () => { };
+  const handleFilterChange = (filter) => {
+    changefilter(filter);
+  };
 
   return (
     <div>
       <h1 className="text-center">ALL FOOTBALL MATCHES</h1>
       <div>
-        <CatFilter categories={newLeagues} filter={filter} handleFilterChange={handleFilterChange} />
-        <Videolist handleClick={handleClick} />
+        <CatFilter handleFilterChange={handleFilterChange} categories={newLeagues} filter={filter} />
+        <Videolist />
       </div>
 
     </div>

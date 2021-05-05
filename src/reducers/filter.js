@@ -1,9 +1,15 @@
-import { CHANGE_FILTER } from '../actions';
+/* eslint-disable no-console */
+import { CHANGE_FILTER } from '../actions/index';
 
-const catfilter = (state = 'All', action) => {
-  switch (action.type) {
+const initialState = [{
+  filter: 'ALL',
+}];
+
+const catfilter = (state = initialState, action) => {
+  const { type, filter } = action;
+  switch (type) {
     case CHANGE_FILTER:
-      return action.payload;
+      return [...state, console.log(filter)];
     default:
       return state;
   }
