@@ -7,7 +7,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { changefilter, fetchStock } from '../actions/index';
 import CatFilter from './CatFilter';
 import Videolist from '../containers/Videolist';
@@ -25,8 +25,10 @@ const Home = ({ filter, userData, loading }) => {
   const newLeagues = ['ALL', ...filteredLeagues];
   newLeagues.sort();
 
+  const dispatch = useDispatch();
+
   const handleFilterChange = (filter) => {
-    changefilter(filter);
+    dispatch(changefilter(filter));
   };
 
   return (
