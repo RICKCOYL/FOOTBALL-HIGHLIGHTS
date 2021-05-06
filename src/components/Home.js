@@ -22,7 +22,7 @@ const Home = ({ filter, userData, loading }) => {
   ));
 
   const filteredLeagues = [...new Set(soccerleagues)];
-  const newLeagues = ['ALL', ...filteredLeagues];
+  const newLeagues = [...filteredLeagues];
   newLeagues.sort();
 
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const Home = ({ filter, userData, loading }) => {
 
   return (
     <div>
-      <h1 className="text-center">ALL FOOTBALL MATCHES</h1>
+      <h1 className="text-center">USE THE DROP DOWN TO PICK YOUR LEAGUE</h1>
       <div>
         <CatFilter handleFilterChange={handleFilterChange} categories={newLeagues} filter={filter} />
         <Videolist />
