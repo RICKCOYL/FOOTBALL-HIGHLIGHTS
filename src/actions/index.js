@@ -21,13 +21,10 @@ export const fetchStockError = (error) => ({
   payload: error,
 });
 
-export const changefilter = (filter) => {
-  console.log(filter);
-  return {
-    type: CHANGE_FILTER,
-    filter,
-  };
-};
+export const changefilter = (filter) => ({
+  type: CHANGE_FILTER,
+  filter,
+});
 
 export const fetchStock = () => (dispatch) => {
   dispatch(fetchStockRequest());

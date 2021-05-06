@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
@@ -15,15 +16,22 @@ const Videolist = ({
     fetchStock();
   }, []);
 
-  // const leagues = userData.map((e) => (
-  // ));
+  const leagues = userData.map((e) => (
+    e.competition.name
+  ));
 
-  // console.log(filter);
+  const homearr = [];
+  const homeDisplayarr = [];
 
+  const homeDisplay = userData.map((e) => homearr.push(e));
+
+  homearr.filter((e) => (filter === e.competition.name ? homeDisplayarr.push(e) : 'Nothing'));
+
+  console.log(homeDisplayarr);
   return (
     <div className="all-matches grid shadow">
       {loading && <div><img id="loader" src={ball} alt="" /></div>}
-      {error || userData.map((e) => (
+      {error || homeDisplayarr.map((e) => (
         <div key={e.title} className="card">
           <Link to={`/details/${e.title}`}>
             <div><img src={e.thumbnail} className="card-img-top" alt="" /></div>
