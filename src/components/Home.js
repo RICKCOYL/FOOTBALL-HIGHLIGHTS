@@ -20,7 +20,6 @@ const Home = ({ filter, userData, loading }) => {
   const soccerleagues = userData.map((e) => (
     e.competition.name
   ));
-
   const filteredLeagues = [...new Set(soccerleagues)];
   const newLeagues = [...filteredLeagues];
   newLeagues.sort();

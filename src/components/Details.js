@@ -50,8 +50,6 @@ const Details = ({
     competition_url: e.competition_url,
   }) : 'nothing'));
 
-  console.log(arrDetails);
-
   return (
     <>
       {loading && <div><img id="loader" src={ball} alt="" /></div>}

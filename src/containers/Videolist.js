@@ -27,7 +27,6 @@ const Videolist = ({
 
   homearr.filter((e) => (filter === e.competition.name ? homeDisplayarr.push(e) : 'Nothing'));
 
-  console.log(homeDisplayarr);
   return (
     <div className="all-matches grid shadow">
       {loading && <div><img id="loader" src={ball} alt="" /></div>}

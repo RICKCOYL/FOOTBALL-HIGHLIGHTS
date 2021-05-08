@@ -11,7 +11,7 @@ describe('recipesReducer', () => {
     error: '',
   };
 
-  describe('Action type is RECIPE_FETCH_FAILURE', () => {
+  describe('Action type ', () => {
     it('returns the current state, setting isLoading to false, and isError to true', () => {
       expect(stock(state, fetchStockError())).toEqual({
         loading: false,
