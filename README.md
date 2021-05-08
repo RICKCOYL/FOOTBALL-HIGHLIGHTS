@@ -12,11 +12,6 @@ Design belongs to me.
 
 ![screenshot](./src/images/image.png)
 
-## Video Presentation
-
-[Visit video presentation](https://www.loom.com/share/979654668b5d46f59f6656f68f8e4398)
-
-
 ## Potential Features
 
 - Search function.
