@@ -1,10 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-console */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
@@ -12,7 +5,7 @@ import { changefilter, fetchStock } from '../actions/index';
 import CatFilter from './CatFilter';
 import Videolist from '../containers/Videolist';
 
-const Home = ({ filter, userData, loading }) => {
+const Home = ({ filter, userData }) => {
   useEffect(() => {
     fetchStock();
   }, []);
@@ -34,12 +27,20 @@ const Home = ({ filter, userData, loading }) => {
     <div>
       <h1 className="text-center">USE THE DROP DOWN TO PICK YOUR LEAGUE</h1>
       <div>
-        <CatFilter handleFilterChange={handleFilterChange} categories={newLeagues} filter={filter} />
+        <CatFilter
+          handleFilterChange={handleFilterChange}
+          categories={newLeagues}
+          filter={filter}
+        />
         <Videolist />
       </div>
 
     </div>
   );
+};
+
+Home.propTypes = {
+  userData: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,11 +1,7 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { changefilter, fetchStock } from '../actions/index';
+import { fetchStock } from '../actions/index';
 
 const CatFilter = ({ handleFilterChange, categories }) => (
   <div className="d-flex justify-content-center my-5">
@@ -21,6 +17,7 @@ const CatFilter = ({ handleFilterChange, categories }) => (
 
 CatFilter.propTypes = {
   handleFilterChange: PropTypes.func.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const mapStateToProps = (state) => ({

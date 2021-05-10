@@ -1,9 +1,4 @@
 /* eslint-disable react/no-danger */
-/* eslint-disable react/jsx-key */
-/* eslint-disable prefer-const */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -13,7 +8,7 @@ import { fetchStock } from '../actions/index';
 import ball from '../images/Soccer-ball.gif';
 
 const Details = ({
-  fetchStock, userData, error, loading,
+  fetchStock, userData, loading,
 }) => {
   const { title } = useParams();
 
@@ -21,8 +16,8 @@ const Details = ({
     fetchStock();
   }, []);
 
-  let arrDetails = [];
-  let converter = new showdown.Converter();
+  const arrDetails = [];
+  const converter = new showdown.Converter();
 
   const details = userData.map((e) => ({
     title: e.title,
@@ -37,7 +32,7 @@ const Details = ({
     competition_url: e.competition.url,
   }));
 
-  const filterDetails = details.filter((e) => (title === e.title ? arrDetails.push({
+  details.filter((e) => (title === e.title ? arrDetails.push({
     title: e.title,
     embed: e.embed,
     url: e.url,
@@ -82,7 +77,12 @@ const Details = ({
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
+Details.propTypes = {
+  userData: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
   userData: state.stock.stock,
   filter: state.catfilter,
   loading: state.stock.loading,
