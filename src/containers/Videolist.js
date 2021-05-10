@@ -1,9 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -18,14 +12,10 @@ const Videolist = ({
     fetchStock();
   }, []);
 
-  const leagues = userData.map((e) => (
-    e.competition.name
-  ));
-
   const homearr = [];
   const homeDisplayarr = [];
 
-  const homeDisplay = userData.map((e) => homearr.push(e));
+  userData.map((e) => homearr.push(e));
 
   homearr.filter((e) => (filter === e.competition.name ? homeDisplayarr.push(e) : 'Nothing'));
 
@@ -47,6 +37,11 @@ const Videolist = ({
       ))}
     </div>
   );
+};
+
+Videolist.propTypes = {
+  userData: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
