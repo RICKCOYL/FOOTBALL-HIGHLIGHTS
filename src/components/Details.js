@@ -54,7 +54,7 @@ const Details = ({
     <>
       {loading && <div><img id="loader" src={ball} alt="" /></div>}
       {arrDetails.map((e) => (
-        <div>
+        <div key={title}>
           <div className="d-flex justify-content-between">
             <div className="">
               <h1>
@@ -95,10 +95,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 Details.propTypes = {
   fetchStock: PropTypes.func.isRequired,
-  userData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    stock: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details);

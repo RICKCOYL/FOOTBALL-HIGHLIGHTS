@@ -12,6 +12,6 @@ describe('filterReducer', () => {
   });
 
   it('returns an empty string of the state passed is undefined, and action is not "FILTER', () => {
-    expect(catfilter(undefined, { type: 'OTHER' })).toBe('ARMENIA: First division');
+    expect(catfilter(undefined, { type: 'OTHER' })).toBe('ENGLAND: Premier League');
   });
 });

@@ -49,11 +49,7 @@ const mapStateToProps = (state) => ({
   error: state.stock.error,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchStock: () => dispatch(fetchStock()),
-});
-
 Home.propTypes = {
   filter: PropTypes.string.isRequired,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, null)(Home);

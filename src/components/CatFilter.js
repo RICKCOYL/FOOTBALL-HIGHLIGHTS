@@ -18,12 +18,9 @@ const CatFilter = ({ handleFilterChange, categories }) => (
     </form>
   </div>
 );
+
 CatFilter.propTypes = {
   handleFilterChange: PropTypes.func.isRequired,
-  userData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    stock: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

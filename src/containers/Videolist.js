@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable no-undef */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -58,14 +60,14 @@ const mapDispatchToProps = (dispatch) => ({
   fetchStock: () => dispatch(fetchStock()),
 });
 
+Videolist.defaultProps = {
+
+};
+
 Videolist.propTypes = {
   fetchStock: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
-  loading: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   filter: PropTypes.string.isRequired,
-  userData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    stock: PropTypes.string.isRequired,
-  }).isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Videolist);
