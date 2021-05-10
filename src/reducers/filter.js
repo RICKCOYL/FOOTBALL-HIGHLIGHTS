@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { CHANGE_FILTER } from '../actions/index';
 
 const initialState = 'ENGLAND: Premier League';
