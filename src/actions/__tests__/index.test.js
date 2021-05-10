@@ -15,14 +15,14 @@ describe('State actions', () => {
   });
 
   describe('fetchSuccess', () => {
-    const data = { cocktails: [] };
+    const data = { matches: [] };
     it('returns an object with type "RECIPE_FETCH_SUCCESS"', () => {
       expect(fetchStockSuccess(data).type).toEqual('FETCH_STOCK_SUCCESS');
     });
   });
 
   describe('fetchFailure', () => {
-    it('returns an object with type "RECIPE_FETCH_FAILURE"', () => {
+    it('returns an object with type "FETCH_STOCK_ERROR"', () => {
       expect(fetchStockError().type).toEqual('FETCH_STOCK_ERROR');
     });
   });
